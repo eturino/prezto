@@ -30,16 +30,18 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
-  'history' \
   'directory' \
+  'docker' \
   'spectrum' \
   'utility' \
-  'ruby' \
   'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'history' \
+  'python' \
   'git' \
-  'prompt'
+  'ruby'
+# REMOVED: 'prompt'
 
 #
 # Autosuggestions
@@ -118,7 +120,7 @@ zstyle ':prezto:module:editor' ps-context 'yes'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 # zstyle ':prezto:module:prompt' theme 'sorin'
-zstyle ':prezto:module:prompt' theme 'eturinomini'
+# zstyle ':prezto:module:prompt' theme 'eturinomini'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -127,7 +129,7 @@ zstyle ':prezto:module:prompt' theme 'eturinomini'
 
 # Set the prompt to display the return code along with an indicator for non-zero
 # return codes. This is not supported by all prompts.
-zstyle ':prezto:module:prompt' show-return-val 'yes'
+# zstyle ':prezto:module:prompt' show-return-val 'yes'
 
 #
 # Python
@@ -176,12 +178,14 @@ zstyle ':prezto:module:prompt' show-return-val 'yes'
 #   'line' \
 #   'cursor' \
 #   'root'
+
 #
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
 #   'builtin' 'bg=blue' \
 #   'command' 'bg=blue' \
 #   'function' 'bg=blue'
+
 #
 # Set syntax pattern styles.
 # zstyle ':prezto:module:syntax-highlighting' pattern \

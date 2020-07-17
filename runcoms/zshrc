@@ -46,19 +46,40 @@ function prependPathIfPresent() {
 
 prependPathIfPresent "/usr/local/opt/imagemagick@6/bin"
 prependPathIfPresent "/usr/local/opt/postgresql@9.6/bin"
-prependPathIfPresent "$HOME/anaconda3/bin"
 prependPathIfPresent "/usr/local/opt/openssl/bin"
 prependPathIfPresent "$HOME/dev/tools/sonarqube/sonar-scanner/bin" # sonarqube sonar-scanner
 
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# n
-export N_PREFIX="$HOME/n"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH="$N_PREFIX/bin:$PATH"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+export PATH="$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Conda >4.4
+
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+  . "$HOME/miniconda3/etc/profile.d/conda.sh"
+else
+  export PATH="$HOME/miniconda3/bin:$PATH"
+fi
+
+# STARSHIP PROMPT
+eval "$(starship init zsh)"
+
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH="$N_PREFIX/bin:$PATH"
+
+export KUBE_EDITOR="vim"
+
+# Brew completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
