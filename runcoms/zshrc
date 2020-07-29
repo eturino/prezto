@@ -71,9 +71,6 @@ fi
 # STARSHIP PROMPT
 eval "$(starship init zsh)"
 
-export N_PREFIX="$HOME/n"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH="$N_PREFIX/bin:$PATH"
-
 export KUBE_EDITOR="vim"
 
 # Brew completion
@@ -83,3 +80,7 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# modified by eturino -> add n at the beginning of the path
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH="$N_PREFIX/bin:$PATH"
